@@ -14,16 +14,6 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
   const [imdbUrl, setImdbUrl] = useState('');
   const [imdbId, setImdbId] = useState('');
 
-  const addMovie = () => {
-    onAdd({
-      title: title.trim(),
-      description,
-      imgUrl,
-      imdbUrl,
-      imdbId,
-    });
-  };
-
   const reset = () => {
     setTitle('');
     setDescription('');
@@ -35,7 +25,15 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    addMovie();
+
+    onAdd({
+      title: title.trim(),
+      description,
+      imgUrl,
+      imdbUrl,
+      imdbId,
+    });
+
     reset();
   }
 
